@@ -21,7 +21,7 @@ export const birdsSlice = createSlice({
     //hook actions = reducers
     reducers: {
         //reducer to add a new bird object
-     addBirdCase: (state : BirdsSlice[], action: PayloadAction<string>) => {
+     addBird: (state : BirdsSlice[], action: PayloadAction<string>) => {
         return [
             ...state,
             {
@@ -30,11 +30,20 @@ export const birdsSlice = createSlice({
             }
           ];
      },
+     //reducer to increment birds view value
+     increaseViewByOne: (state: BirdsSlice[], action: PayloadAction<string>) => {
+        const target = action.payload;
+        //get specific object from array state
+        const bird = state.find((b : BirdsSlice) => {return target === b.name});
+      if (bird) {
+        bird.views += 1;
+      } 
+     },
     },
   })
   
   //export reducer actions
-  export const {addBirdCase} = birdsSlice.actions
+  export const {addBird, increaseViewByOne} = birdsSlice.actions
   
   // Other code such as selectors can use the imported `RootState` type
   export const selectBirds = (state: RootState) => state.birds

@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { RootState } from "../app/store";
 import { useState } from "react";
-import {addBirdCase} from '../app/features/birdsSlice'
+import {addBird, increaseViewByOne} from '../app/features/birdsSlice'
 
 export const Birds = () => {
   //states
@@ -23,7 +23,7 @@ export const Birds = () => {
    */
   const handleSubmit = (event: any) => {
     event.preventDefault();
-   dispatch(addBirdCase(birdName))
+   dispatch(addBird(birdName))
     setBird(''); //change state back
   };
 
@@ -58,7 +58,7 @@ export const Birds = () => {
             <div>Views: {bird.views}</div>
             <div>
               Views: {bird.views}
-              <button>
+              <button onClick={() => dispatch(increaseViewByOne(bird.name))}>
                 <span role="img" aria-label="add">
                   ➕
                 </span>
