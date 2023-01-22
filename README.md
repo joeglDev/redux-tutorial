@@ -32,3 +32,11 @@ You can safely import the RootState type from the store file here. It's a circul
 `src/components/Birds.tsx`
 
 Like with context, every child component will be able to access the store without any additional props. To access items in your Redux store, use a Hook called useSelector from the react-redux package. The useSelector Hook takes a selector function as an argument. The selector function will receive the state of your store as an argument that you will use to return the field you want:
+
+## 5. Modifying a state
+
+``src/app/features/slice``
+
+Reducers are functions that will determine how a state should change based on actions. The actions don’t make changes themselves; the reducers will take the state and make changes based on actions.
+
+A reducer receives two arguments: the current state and the action. The current state refers to the state for a particular section of the store. Generally, the name of the reducer will match with a field in the store
