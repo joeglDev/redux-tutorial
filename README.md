@@ -2,11 +2,11 @@
 
 [Notes: ](https://www.digitalocean.com/community/tutorials/how-to-manage-state-in-react-with-redux)
 
-## Provider
+## 1. Provider
 
 Wrap top level of application in `<Provider> </Provider >` to access react-redux store.
 
-## CreateStore
+## 2. CreateStore
 
 `src/ index.ts`
 
@@ -14,7 +14,7 @@ Import the createStore function from redux, then pass a function that returns an
 
 ### Note:createStore is outdates use configureStore
 
-## Displaying data with useSelector
+## 3. Displaying data with useSelector
 
 `src/components/Birds.tsx`
 
