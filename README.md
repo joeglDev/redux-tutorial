@@ -1,46 +1,21 @@
-# Getting Started with Create React App
+# React Redux notes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+[Notes: ](https://www.digitalocean.com/community/tutorials/how-to-manage-state-in-react-with-redux)
 
-## Available Scripts
+## Provider
 
-In the project directory, you can run:
+Wrap top level of application in `<Provider> </Provider >` to access react-redux store.
 
-### `npm start`
+## CreateStore
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`src/ index.ts`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Import the createStore function from redux, then pass a function that returns an object. In this case, return an object with a field called birds that points to an array of individual birds. Each bird will have a name and a views count. Save the output of the function to a value called store, then pass the store to a prop called store in the Provider:
 
-### `npm test`
+### Note:createStore is outdates use configureStore
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Displaying data with useSelector
 
-### `npm run build`
+`src/components/Birds.tsx`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Like with context, every child component will be able to access the store without any additional props. To access items in your Redux store, use a Hook called useSelector from the react-redux package. The useSelector Hook takes a selector function as an argument. The selector function will receive the state of your store as an argument that you will use to return the field you want:

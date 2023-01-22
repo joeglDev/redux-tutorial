@@ -1,9 +1,13 @@
-
 import './App.css';
+import { Birds } from './components/Birds';
+
+
 
 function App() {
   return (
+
     <div className="App">
+      <Birds></Birds>
       <header className="App-header">
   
         <p>
