@@ -1,11 +1,14 @@
 import { useAppSelector } from "../app/hooks";
+import { RootState } from "../app/store";
 
 export const Birds = () => {
-  interface Bird {
-    name: string; views: number ;
-  }
+ 
+  interface BirdsSlice {
+    name: string;
+    views: number;
+    }
 
-  const birds = useAppSelector((state: any) => {
+  const birds = useAppSelector((state: RootState) => {
     return state.birds;
   });
   console.log("STATE:",birds);
@@ -13,7 +16,7 @@ export const Birds = () => {
     <section>
       <h1>Bird List</h1>
       <ul>
-        {birds.map((bird: Bird) => (
+        {birds.map((bird: BirdsSlice) => (
           <li key={bird.name}>
             <h3>{bird.name}</h3>
             <div>Views: {bird.views}</div>

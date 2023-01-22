@@ -1,15 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import birdsReducer from './features/birdsSlice';
 
-/*export const store = createStore(() => ({
-  birds: [
-    {
-      name: 'robin',
-      views: 1
-    }
-  ]
-}));
-*/
 export const store = configureStore({
   reducer: {
     birds: birdsReducer,
