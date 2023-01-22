@@ -4,17 +4,30 @@
 
 ## 1. Provider
 
+`index.tsx`
+
 Wrap top level of application in `<Provider> </Provider >` to access react-redux store.
 
-## 2. CreateStore
+## 2. configureStore
 
-`src/ index.ts`
+`src/app/store.ts`
 
-Import the createStore function from redux, then pass a function that returns an object. In this case, return an object with a field called birds that points to an array of individual birds. Each bird will have a name and a views count. Save the output of the function to a value called store, then pass the store to a prop called store in the Provider:
+Using configureStore should not need any additional typings. You will, however, want to extract the RootState type and the Dispatch type so that they can be referenced as needed. Inferring these types from the store itself means that they correctly update as you add more state slices or modify middleware settings.
 
-### Note:createStore is outdates use configureStore
+Since those are types, it's safe to export them directly from your store setup file such as app/store.ts and import them directly into other files.
 
-## 3. Displaying data with useSelector
+# 3. Reducers
+
+`src/app/features/slice`
+
+Each slice file should define a type for its initial state value, so that createSlice can correctly infer the type of state in each case reducer.
+
+All generated actions should be defined using the PayloadAction<T> type from Redux Toolkit, which takes the type of the action.payload field as its generic argument.
+
+You can safely import the RootState type from the store file here. It's a circular import, but the TypeScript compiler can correctly handle that for types. This may be needed for use cases like writing selector functions.
+
+
+## 4. Displaying data with useSelector
 
 `src/components/Birds.tsx`
 

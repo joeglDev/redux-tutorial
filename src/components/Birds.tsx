@@ -8,7 +8,7 @@ export const Birds = () => {
   const birds = useAppSelector((state: any) => {
     return state.birds;
   });
-  console.log(birds);
+  console.log("STATE:",birds);
   return (
     <section>
       <h1>Bird List</h1>

@@ -1,5 +1,7 @@
-import { configureStore, ThunkAction, Action, createStore } from '@reduxjs/toolkit';
-export const store = createStore(() => ({
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import birdsReducer from './features/birdsSlice';
+
+/*export const store = createStore(() => ({
   birds: [
     {
       name: 'robin',
@@ -7,6 +9,12 @@ export const store = createStore(() => ({
     }
   ]
 }));
+*/
+export const store = configureStore({
+  reducer: {
+    birds: birdsReducer,
+  },
+});
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
